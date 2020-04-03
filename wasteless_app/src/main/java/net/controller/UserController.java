@@ -40,8 +40,6 @@ public class UserController {
         }
         if (!username.equals("") && !password.equals(""))
             model.addAttribute("message", "Invalid User");
-
-        //return again login page
         return "login";
     }
 

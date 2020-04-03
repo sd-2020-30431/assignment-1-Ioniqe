@@ -2,9 +2,7 @@ package net.controller;
 
 import net.model.Item;
 import net.model.Lists;
-import net.model.User;
 import net.service.ItemService;
-import net.service.ListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class ItemController {
@@ -31,32 +28,23 @@ public class ItemController {
         List<Item> listOfItems = itemService.findItems(list.getId());
         model.addAttribute("list", list);
         model.addAttribute("listItems", listOfItems);
-
         this.list = list;
-
         return "item_list";
     }
 
     @RequestMapping("/newItem")
     public String showNewItemPage(Model model, @ModelAttribute(name = "createdList") Lists list) {
         Item item = new Item();
-
         item.setList(list);
-
         model.addAttribute("item", item);
-
         return "new_item";
     }
 
     @RequestMapping(value = "/saveItem", method = RequestMethod.POST)
     public String saveItem(@ModelAttribute("item") Item item, RedirectAttributes redirectAttributes) {
-
         item.setList(list);
-
         itemService.save(item);
-
         redirectAttributes.addFlashAttribute("message", "Item added successfully!");
-
         return "redirect:/login";
     }
 
@@ -65,14 +53,12 @@ public class ItemController {
         ModelAndView mav = new ModelAndView("edit_item");
         Item item = itemService.getById(id);
         mav.addObject("item", item);
-
         return mav;
     }
 
     @RequestMapping("/donate_item/{id}")
     public String deleteItem(@PathVariable(name = "id") int id, RedirectAttributes redirectAttributes) {
         itemService.delete(id);
-
         redirectAttributes.addFlashAttribute("message", "Item donated successfully!");
         return "redirect:/login";
     }

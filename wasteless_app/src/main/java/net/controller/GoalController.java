@@ -16,8 +16,6 @@ public class GoalController {
 
     @RequestMapping(value = "/goalStats/{userId}") //, method = RequestMethod.GET
     public String createGoal(Model model, @PathVariable(value = "userId") long id, RedirectAttributes redirectAttributes) {
-//        redirectAttrs.addAttribute("idUser", idUser);
-
         User user = goalService.getUserOfGoal(id);
 
         String waste;
@@ -32,12 +30,8 @@ public class GoalController {
             donate = false;
         }
 
-//        redirectAttributes.addFlashAttribute("calories", user.getGoal());
-////        redirectAttributes.addFlashAttribute("waste", waste);
-
         model.addAttribute("calories", user.getGoal());
         model.addAttribute("waste", waste);
-//        model.addAttribute("userId", user.getId());
         model.addAttribute("donate", donate);
         return "goal_stats";
     }

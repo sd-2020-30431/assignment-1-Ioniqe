@@ -29,7 +29,7 @@ public class GoalService {
 
     public int calculateAmountOfDailyCalories(long userId) {
         List<Lists> usersLists = listRepository.findAllByUserId(userId);
-        List<Item> itemsInTheList = new ArrayList<>();
+        List<Item> itemsInTheList;
 
         int amount = 0;
         Date date = new Date();
