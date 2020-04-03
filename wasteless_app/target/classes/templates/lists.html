@@ -11,12 +11,13 @@
     <!--<a href="new">Create New Product</a>-->
     <br/><br/>
     <!--th:object="${listOfLists}"-->
-    <form th:action="@{/lists}"method="post">
+    <form th:action="@{/lists/${username}}" method="post">
         <table border="1" cellpadding="10">
             <thead>
             <tr>
                 <th>List ID</th>
                 <th>Name</th>
+                <th>Options</th>
             </tr>
             </thead>
             <tbody>
@@ -26,28 +27,22 @@
                 <td>
                     <a th:href="@{'/edit/' + ${list.id}}">Edit List</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/delete/' + ${list.id}}">Delete List</a>
+                    <a th:href="@{'/delete/' + ${username} + '/' + ${list.id}}">Delete List</a>
                 </td>
             </tr>
             </tbody>
+
         </table>
     </form>
+    <br/><br/>
+    <a th:href="@{/newList}">Create New List</a>
+
+    </br>
+    </br>
+    <a th:href="@{'/inputGoal/'+${username}}">Set your goal</a>
+
+
 
 </div>
 </body>
 </html>
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en"-->
-      <!--xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-    <!--<meta charset="UTF-8">-->
-    <!--<title>Current Lists</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>===============</h1>-->
-<!--<h1>HOME PAGE</h1>-->
-<!--<h1>===============</h1>-->
-
-<!--</body>-->
-<!--</html>-->

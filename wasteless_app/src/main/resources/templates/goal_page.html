@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Goal</title>
+</head>
+<body>
+<div align="center">
+    <h1>Set a new Goal</h1>
+    <br/>
+    <form th:action="@{/updateUser}" th:object="${user}" method="post">
+
+        <!--<input type="hidden" name="idUser" value="${idUser}">-->
+
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Goal (calories/day):</td>
+                <td><input type="text" th:field="*{goal}"/></td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Save</button>
+                </td>
+            </tr>
+        </table>
+
+    </form>
+
+
+    <a th:href="@{'/goalStats/' + ${user.id}}">SEE STATS</a>
+
+
+
+    <!--<p>With the current goal of ${calories} calories per day, you will have ${waste}</p>-->
+    <!--no waste OR a waste of X calories-->
+
+</div>
+</body>
+</html>
