@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -36,20 +35,15 @@ public class ListsController {
     public String deleteProduct(@PathVariable(name = "id") int id, @PathVariable(name = "username") String username, RedirectAttributes redirectAttributes) {
         listService.delete(id);
         redirectAttributes.addFlashAttribute("message", "List deleted successfully!");
-//        return "redirect:/lists/" + username;
         return "redirect:/login";
     }
-
-    //----
 
     @RequestMapping("/newList")
     public String showNewListPage(Model model, RedirectAttributes redirectAttributes) {
         Lists list = new Lists();
         list.setUser(user);
         model.addAttribute("list", list);
-//        redirectAttributes.addFlashAttribute("createdList", list);
         return "new_list";
-//        return "redirect:/item";
     }
 
     @RequestMapping(value = "/saveList", method = RequestMethod.POST)

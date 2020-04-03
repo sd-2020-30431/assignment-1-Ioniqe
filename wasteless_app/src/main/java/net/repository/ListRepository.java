@@ -9,7 +9,9 @@ import java.util.Optional;
 
 @Repository
 public interface ListRepository extends JpaRepository<Lists, Long> {
-    Lists findListsByName(String name);
+//    List<Lists> findListsByName(String name);
     List<Lists> findAllByUserId(Long userId);
     Optional<Lists> findById(Long id);
+    List<Lists> findAllByUser_Username(String username);
+
 }

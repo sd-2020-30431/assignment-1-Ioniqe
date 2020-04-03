@@ -8,10 +8,7 @@
 <body>
 <div align="center">
     <h1>ITEMS IN THE CHOSEN LIST</h1>
-    <!--<h3>having the following items</h3>-->
-    <!--<a href="new">Create New Product</a>-->
     <br/><br/>
-    <!--th:object="${listOfLists}"-->
     <form th:action="@{/saveList}"  method="post">
         <table border="1" cellpadding="10">
             <thead>
@@ -27,7 +24,6 @@
             </tr>
             </thead>
             <tbody>
-            <!--aici trebe puse field-urile pt item-uri-->
             <tr th:each="item : ${listItems}">
             <td th:text="${item.id}">Product ID</td>
             <td th:text="${item.name}">Name</td>
@@ -36,7 +32,6 @@
             <td th:text="${item.purchaseDate}">PurchaseDate</td>
             <td th:text="${item.expirationDate}">ExpirationDate</td>
             <td th:text="${item.consumptionDate}">ConsumptionDate</td>
-
 
             <td>
                 <a th:href="@{'/edit_item/' + ${item.id}}">Edit Item</a>
@@ -53,7 +48,6 @@
     </form>
     <br/><br/>
     <a th:href="@{/newItem}">Create New Item</a>
-    <!--<a href="newItem">Create New Item</a>-->
 </div>
 </body>
 </html>

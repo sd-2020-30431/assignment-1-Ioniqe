@@ -28,8 +28,8 @@ public class ListService {
         listRepository.deleteById(id);
     }
 
-    public Lists findList(String name) {
-        return listRepository.findListsByName(name);
+    public List<Lists> findAllListsOfUser(String name) {
+        return listRepository.findAllByUser_Username(name);
     }
 
     public List<Lists> findListsByUserId(Long userId) {

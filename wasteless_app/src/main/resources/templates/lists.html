@@ -8,9 +8,7 @@
 <body>
 <div align="center">
     <h1>CURRENT LISTS</h1>
-    <!--<a href="new">Create New Product</a>-->
     <br/><br/>
-    <!--th:object="${listOfLists}"-->
     <form th:action="@{/lists/${username}}" method="post">
         <table border="1" cellpadding="10">
             <thead>
@@ -41,7 +39,14 @@
     </br>
     <a th:href="@{'/inputGoal/'+${username}}">Set your goal</a>
 
+    </br>
+    </br>
 
+    <form action="#" data-th-action="@{/report}" method="get">
+        <input type="hidden" name="username" th:value="${username}"/>
+        <button type="submit" name="action" value="WEEKLY">See weekly report</button>
+        <button type="submit" name="action" value="MONTHLY">See monthly report</button>
+    </form>
 
 </div>
 </body>
