@@ -12,6 +12,8 @@ public class User {
     private String username;
     private String password;
 
+    private Long goal;
+
     public User() {
     }
 
@@ -27,7 +29,7 @@ public class User {
         this.password = password;
     }
 
-    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Lists> listOfLists;
 
     public Set<Lists> getListOfLists() {
@@ -62,4 +64,12 @@ public class User {
         this.password = password;
     }
 
+
+    public Long getGoal() {
+        return goal;
+    }
+
+    public void setGoal(Long goal) {
+        this.goal = goal;
+    }
 }
